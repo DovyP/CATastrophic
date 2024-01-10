@@ -23,7 +23,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayer(Vector2 movementInput)
     {
-        movementDirection = movementInput;
+        if (movementInput.magnitude > 0)
+        {
+            if (Vector2.Dot(movementInput.normalized, movementDirection) < 0)
+                currentVelocity = 0;
+            movementDirection = movementInput;
+        }
+
         currentVelocity = CalculateSpeed(movementInput);
     }
 
