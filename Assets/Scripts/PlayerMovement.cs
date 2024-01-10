@@ -1,9 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent (typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    public UnityEvent<float> OnMovement;
+
     [SerializeField] private PlayerMovementDataSO movementData;
 
     [SerializeField] private float currentVelocity;
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        OnMovement.Invoke(currentVelocity);
         rigidBody.velocity = currentVelocity * movementDirection.normalized;
     }
 

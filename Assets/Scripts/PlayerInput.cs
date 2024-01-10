@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] public UnityEvent<Vector2> OnMovementKeyPressed;
+    public UnityEvent<Vector2> OnMovementKeyPressed;
 
     private void Update()
     {
