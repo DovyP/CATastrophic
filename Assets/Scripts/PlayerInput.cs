@@ -1,13 +1,31 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerInput : MonoBehaviour
 {
+    private Camera mainCamera;
+
     public UnityEvent<Vector2> OnMovementKeyPressed;
+    public UnityEvent<Vector2> OnMousePositionChange;
+
+    private void Awake()
+    {
+        mainCamera = Camera.main;
+    }
 
     private void Update()
     {
         GetMovementInput();
+        GetMouseInput();
+    }
+
+    private void GetMouseInput()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = mainCamera.nearClipPlane;
+        Vector2 mousePositionInWorldSpace = mainCamera.ScreenToWorldPoint(mousePosition);
+        OnMousePositionChange?.Invoke(mousePositionInWorldSpace);
     }
 
     private void GetMovementInput()
