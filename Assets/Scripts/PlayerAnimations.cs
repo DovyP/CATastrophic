@@ -10,7 +10,7 @@ public class PlayerAnimations : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void SetMoveAnimation(bool isMoving)
+    private void SetMoveAnimation(bool isMoving)
     {
         animator.SetBool("IsMoving", isMoving);
     }

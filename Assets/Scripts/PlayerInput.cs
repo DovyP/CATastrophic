@@ -6,8 +6,8 @@ public class PlayerInput : MonoBehaviour
 {
     private Camera mainCamera;
 
-    public UnityEvent<Vector2> OnMovementKeyPressed;
-    public UnityEvent<Vector2> OnMousePositionChange;
+    [SerializeField] private UnityEvent<Vector2> OnMovementKeyPressed;
+    [SerializeField] private UnityEvent<Vector2> OnMousePositionChange;
 
     private void Awake()
     {

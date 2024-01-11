@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent (typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    public UnityEvent<float> OnMovement;
+    [SerializeField] private UnityEvent<float> OnMovement;
 
     [SerializeField] private PlayerMovementDataSO movementData;
 
